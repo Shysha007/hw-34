@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Данные из localStorage</title>
+</head>
+<body>
+    <script>
+        
+         let dataForm = JSON.parse(localStorage.getItem("myForm"));
+
+         if(dataForm){
+            storageList();
+         }else{
+            let data = document.createTextNode('Данные из хранилища не загружены!');
+            document.body.append(data);
+         }
+
+           function storageList(){
+            let ul = document.createElement("ul");
+            document.body.prepend(ul);  
+            
+            for (let key in dataForm){
+                let li = document.createElement('li');
+                if(dataForm[key] || key === "terms"){
+                    li.textContent = dataForm[key];
+                }else{
+                    li.textContent = "Данные отсутствуют.";
+                }
+                ul.append(li);
+            }
+         }
+    </script>
+</body>
+</html>
