@@ -24,7 +24,7 @@
             
             for (let key in dataForm){
                 let li = document.createElement('li');
-                if(dataForm[key] || key === "terms"){
+                if((''+dataForm[key]).trim() ){
                     li.textContent = dataForm[key];
                 }else{
                     li.textContent = "Данные отсутствуют.";
